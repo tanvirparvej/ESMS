@@ -1,0 +1,57 @@
+<h2 class="mb-4">Company Accounts</h2>
+
+<button
+  class="btn btn-primary mb-3"
+  (click)="router.navigate(['/company-accounts/create'])"
+>
+  Create New Account
+</button>
+
+<div *ngIf="loading" class="alert alert-info">Loading...</div>
+<div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+
+<table
+  *ngIf="!loading && !error && accounts.length > 0"
+  class="table table-striped table-bordered"
+>
+  <thead class="table-dark">
+    <tr>
+      <th>Account No</th>
+      <th>Bank Name</th>
+      <th>Branch Name</th>
+      <th>Current Balance</th>
+      <th>Grade6 Basic Salary</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let acc of accounts">
+      <td>{{ acc.accountNo }}</td>
+      <td>{{ acc.bankName }}</td>
+      <td>{{ acc.branchName }}</td>
+      <td>{{ acc.currentBalance }}</td>
+      <td>{{ acc.grade6BasicSalary }}</td>
+      <td>
+        <button
+          class="btn btn-sm btn-warning me-2"
+          (click)="editAccount(acc.id)"
+        >
+          Edit
+        </button>
+        <button
+          class="btn btn-sm btn-danger"
+          (click)="deleteAccount(acc.id)"
+        >
+          Delete
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div
+  *ngIf="!loading && !error && accounts.length === 0"
+  class="alert alert-warning"
+>
+  No accounts found.
+</div>

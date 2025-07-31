@@ -1,1 +1,114 @@
-/* You can add global styles to this file, and also import other style files */
+/* Reset & base */
+* {
+  box-sizing: border-box;
+}
+
+body, html {
+  margin: 0;
+  height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f6f8;
+  color: #333;
+}
+
+/* Container helper */
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Header */
+.app-header {
+  background-color: #2c3e50;
+  color: white;
+  box-shadow: 0 2px 5px rgb(0 0 0 / 0.1);
+  padding: 1rem 0;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-weight: 600;
+  font-size: 1.75rem;
+}
+
+/* Layout: navbar + content */
+.app-layout {
+  display: flex;
+  height: calc(100vh - 104px); /* header + footer height */
+  max-width: 1140px;
+  margin: 1rem auto;
+  background: white;
+  box-shadow: 0 0 12px rgb(0 0 0 / 0.05);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Navbar */
+.app-navbar {
+  width: 240px;
+  background-color: #34495e;
+  color: white;
+  padding: 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+  box-shadow: inset -1px 0 0 rgb(255 255 255 / 0.1);
+}
+
+.app-navbar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.app-navbar li {
+  margin: 0;
+}
+
+.app-navbar a {
+  display: block;
+  color: #ecf0f1;
+  text-decoration: none;
+  padding: 0.75rem 2rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+  border-left: 4px solid transparent;
+}
+
+.app-navbar a:hover {
+  background-color: #3b5161;
+}
+
+.app-navbar a.active {
+  background-color: #1abc9c;
+  color: #fff;
+  font-weight: 700;
+  border-left-color: #16a085;
+}
+
+/* Content */
+.app-content {
+  flex-grow: 1;
+  padding: 2rem 3rem;
+  overflow-y: auto;
+  background: #fff;
+  border-left: 1px solid #ecf0f1;
+  border-radius: 0 8px 8px 0;
+}
+
+/* Footer */
+app-footer {
+  display: block;
+}
+
+footer {
+  background-color: #2c3e50;
+  color: #bdc3c7;
+  text-align: center;
+  padding: 1rem 0;
+  font-size: 0.9rem;
+  box-shadow: 0 -2px 5px rgb(0 0 0 / 0.1);
+  user-select: none;
+  margin-top: 1rem;
+  border-radius: 0 0 8px 8px;
+}

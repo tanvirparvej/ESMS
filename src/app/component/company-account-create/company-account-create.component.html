@@ -1,0 +1,48 @@
+<h2>Create Company Account</h2>
+
+<form [formGroup]="accountForm" (ngSubmit)="onSubmit()" novalidate>
+  <div class="mb-3">
+    <label for="accountNo" class="form-label">Account No</label>
+    <input id="accountNo" type="text" class="form-control" formControlName="accountNo" />
+    <div *ngIf="accountForm.controls['accountNo'].invalid && accountForm.controls['accountNo'].touched" class="text-danger">
+      Account No is required and must be at least 5 characters.
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="bankName" class="form-label">Bank Name</label>
+    <input id="bankName" type="text" class="form-control" formControlName="bankName" />
+    <div *ngIf="accountForm.controls['bankName'].invalid && accountForm.controls['bankName'].touched" class="text-danger">
+      Bank Name is required.
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="branchName" class="form-label">Branch Name</label>
+    <input id="branchName" type="text" class="form-control" formControlName="branchName" />
+    <div *ngIf="accountForm.controls['branchName'].invalid && accountForm.controls['branchName'].touched" class="text-danger">
+      Branch Name is required.
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="currentBalance" class="form-label">Current Balance</label>
+    <input id="currentBalance" type="number" class="form-control" formControlName="currentBalance" />
+    <div *ngIf="accountForm.controls['currentBalance'].invalid && accountForm.controls['currentBalance'].touched" class="text-danger">
+      Current Balance must be 0 or more.
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="grade6BasicSalary" class="form-label">Grade 6 Basic Salary</label>
+    <input id="grade6BasicSalary" type="number" class="form-control" formControlName="grade6BasicSalary" />
+    <div *ngIf="accountForm.controls['grade6BasicSalary'].invalid && accountForm.controls['grade6BasicSalary'].touched" class="text-danger">
+      Grade 6 Basic Salary must be 0 or more.
+    </div>
+  </div>
+
+  <button class="btn btn-primary" type="submit" [disabled]="loading">Create</button>
+  <button class="btn btn-secondary ms-2" type="button" (click)="router.navigate(['/company-accounts'])" [disabled]="loading">Cancel</button>
+
+  <div *ngIf="error" class="alert alert-danger mt-3">{{ error }}</div>
+</form>
