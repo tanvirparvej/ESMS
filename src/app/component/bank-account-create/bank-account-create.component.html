@@ -1,1 +1,42 @@
-<p>bank-account-create works!</p>
+<h2>{{ isEditMode ? 'Edit' : 'Create' }} Bank Account</h2>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+  <div class="mb-3">
+    <label class="form-label">Account No</label>
+    <input type="text" class="form-control" formControlName="accountNo" [readonly]="isEditMode" />
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Account Name</label>
+    <input type="text" class="form-control" formControlName="accountName" />
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Account Type</label>
+    <input type="text" class="form-control" formControlName="accountType" />
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Current Balance</label>
+    <input type="number" class="form-control" formControlName="currentBalance" />
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Bank Name</label>
+    <input type="text" class="form-control" formControlName="bankName" />
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Branch Name</label>
+    <input type="text" class="form-control" formControlName="branchName" />
+  </div>
+
+  <button class="btn btn-primary" type="submit" [disabled]="loading">
+    {{ isEditMode ? 'Update' : 'Create' }}
+  </button>
+  <button class="btn btn-secondary ms-2" type="button" (click)="router.navigate(['/bank-accounts'])">
+    Cancel
+  </button>
+
+  <div *ngIf="error" class="alert alert-danger mt-3">{{ error }}</div>
+</form>

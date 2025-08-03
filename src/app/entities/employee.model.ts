@@ -1,7 +1,7 @@
 import { BankAccount } from './bank-account.model';
 
 export interface Employee {
-  id?: number;
+  id: number;
   name: string;
   grade: number;
   address?: string;

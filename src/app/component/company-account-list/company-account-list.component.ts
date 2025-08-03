@@ -25,29 +25,11 @@ export class CompanyAccountListComponent implements OnInit {
     this.loadAccounts();
   }
 
-  /* loadAccounts(): void {
-    console.log('Loading company accounts...');
-    this.loading = true;
-    this.companyAccountService.getAll().subscribe({
-      next: (data) => {
-        this.accounts = data;
-        this.loading = false;
-      },
-      error: (err) => {
-        this.error = 'Failed to load company accounts';
-        this.loading = false;
-      }
-    });
-    console.log(this.accounts);
-  } */
-
-    loadAccounts(): void {
-  console.log('Loading company accounts...');
+  loadAccounts(): void {
   this.loading = true;
   this.companyAccountService.getAll().subscribe({
     next: (data) => {
       this.accounts = data;
-      console.log('Accounts loaded:', this.accounts);  // <-- here
       this.loading = false;
     },
     error: (err) => {

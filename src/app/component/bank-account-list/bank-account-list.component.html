@@ -1,1 +1,38 @@
-<p>bank-account-list works!</p>
+<h2>Bank Accounts</h2>
+
+<button class="btn btn-primary mb-3" (click)="router.navigate(['/bank-accounts/create'])">
+  Create New Account
+</button>
+
+<div *ngIf="loading">Loading...</div>
+<div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+
+<table *ngIf="!loading && !error" class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Account No</th>
+      <th>Account Name</th>
+      <th>Type</th>
+      <th>Balance</th>
+      <th>Bank Name</th>
+      <th>Branch</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let acc of accounts">
+      <td>{{ acc.accountNo }}</td>
+      <td>{{ acc.accountName }}</td>
+      <td>{{ acc.accountType }}</td>
+      <td>{{ acc.currentBalance }}</td>
+      <td>{{ acc.bankName }}</td>
+      <td>{{ acc.branchName }}</td>
+      <td>
+        <button class="btn btn-primary btn-sm me-2" (click)="editAccount(acc.accountNo)">Edit</button>
+        <button class="btn btn-danger btn-sm" (click)="deleteAccount(acc.accountNo)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div *ngIf="!loading && !error && accounts.length === 0" class="alert alert-info">
+  No bank accounts found.
