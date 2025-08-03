@@ -13,7 +13,11 @@
 
   <div class="mb-3">
     <label class="form-label">Account Type</label>
-    <input type="text" class="form-control" formControlName="accountType" />
+    <select id="accountType" class="form-select" formControlName="accountType">
+      <option [ngValue]="null" disabled>-- Select Account Type --</option>
+      <option [ngValue]="'Savings'">Savings</option>
+      <option [ngValue]="'Current'">Current</option>
+    </select>
   </div>
 
   <div class="mb-3">
@@ -29,6 +33,11 @@
   <div class="mb-3">
     <label class="form-label">Branch Name</label>
     <input type="text" class="form-control" formControlName="branchName" />
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Employee Id</label>
+    <input type="number" class="form-control" formControlName="employeeId" />
   </div>
 
   <button class="btn btn-primary" type="submit" [disabled]="loading">

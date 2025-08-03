@@ -12,6 +12,7 @@ export class SalaryService {
   constructor(private http: HttpClient) {}
 
   paySalaries(): Observable<string> {
+    alert('Paying salaries...');
     return this.http.post<string>(`${this.apiUrl}/pay`, null);
   }
 }

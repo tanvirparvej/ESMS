@@ -37,7 +37,6 @@ export class CompanyAccountCreateComponent implements OnInit {
     });
 
     const idParam = this.route.snapshot.paramMap.get('id');
-    console.log('Route param id:', idParam);
     if (idParam) {
       this.isEditMode = true;
       this.accountId = +idParam;

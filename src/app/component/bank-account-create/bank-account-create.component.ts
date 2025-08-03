@@ -18,6 +18,7 @@ export class BankAccountCreateComponent implements OnInit {
   error = '';
   isEditMode = false;
   accountNoParam = '';
+  accountId: number | undefined;
 
   constructor(
     private fb: FormBuilder,
@@ -30,10 +31,11 @@ export class BankAccountCreateComponent implements OnInit {
     this.form = this.fb.group({
       accountNo: ['', [Validators.required, Validators.minLength(5)]],
       accountName: ['', Validators.required],
-      accountType: ['', Validators.required],
+      accountType: [null, Validators.required],
       currentBalance: [0, [Validators.required, Validators.min(0)]],
       bankName: ['', Validators.required],
-      branchName: ['', Validators.required]
+      branchName: ['', Validators.required],
+      employeeId: ['', Validators.required]
     });
 
     const param = this.route.snapshot.paramMap.get('accountNo');
@@ -49,6 +51,7 @@ export class BankAccountCreateComponent implements OnInit {
     this.bankAccountService.getByAccountNo(accountNo).subscribe({
       next: (acc) => {
         this.form.patchValue(acc);
+        this.accountId = acc.id;
         this.loading = false;
       },
       error: () => {
@@ -61,11 +64,13 @@ export class BankAccountCreateComponent implements OnInit {
   onSubmit(): void {
     if (this.form.invalid) {
       this.form.markAllAsTouched();
+      alert('Please fill in all required fields correctly.');
       return;
     }
 
     this.loading = true;
     const accountData: BankAccount = this.form.value;
+    accountData.id = this.accountId;
 
     const request = this.isEditMode
       ? this.bankAccountService.update(accountData)

@@ -29,7 +29,7 @@ export class EmployeeCreateComponent implements OnInit {
   ngOnInit(): void {
     this.employeeForm = this.fb.group({
       name: ['', Validators.required],
-      grade: [0, [Validators.required, Validators.min(1)]],
+      grade: [null, [Validators.required, Validators.min(1), Validators.max(6)]],
       address: [''],
       mobile: ['', Validators.required],
       salary: [0, [Validators.required, Validators.min(0)]]
@@ -64,10 +64,14 @@ export class EmployeeCreateComponent implements OnInit {
   }
 
   onSubmit(): void {
+
+    console.log("Form Submitted:");
     if (this.employeeForm.invalid) {
       this.employeeForm.markAllAsTouched();
       return;
     }
+
+    console.log(this.employeeForm.value);
 
     this.loading = true;
     this.error = '';
@@ -77,6 +81,8 @@ export class EmployeeCreateComponent implements OnInit {
       id: this.employeeId
     };
 
+    console.log('Employee Data:', employeeData);
+
     const request = this.isEditMode
       ? this.employeeService.update(employeeData)
       : this.employeeService.create(employeeData);
@@ -84,7 +90,7 @@ export class EmployeeCreateComponent implements OnInit {
     request.subscribe({
       next: () => {
         this.loading = false;
-        this.router.navigate(['/employees']);
+        this.router.navigate(['/employee']);
       },
       error: () => {
         this.error = 'Failed to save employee.';

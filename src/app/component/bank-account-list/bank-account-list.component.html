@@ -16,6 +16,7 @@
       <th>Balance</th>
       <th>Bank Name</th>
       <th>Branch</th>
+      <th>Employee Id</th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -27,6 +28,7 @@
       <td>{{ acc.currentBalance }}</td>
       <td>{{ acc.bankName }}</td>
       <td>{{ acc.branchName }}</td>
+      <td>{{ acc.employeeId }}</td>
       <td>
         <button class="btn btn-primary btn-sm me-2" (click)="editAccount(acc.accountNo)">Edit</button>
         <button class="btn btn-danger btn-sm" (click)="deleteAccount(acc.accountNo)">Delete</button>

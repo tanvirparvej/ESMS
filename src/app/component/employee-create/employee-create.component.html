@@ -11,9 +11,17 @@
 
   <div class="mb-3">
     <label for="grade" class="form-label">Grade</label>
-    <input id="grade" type="number" class="form-control" formControlName="grade" />
+    <select id="grade" class="form-select" formControlName="grade">
+      <option [ngValue]="null" disabled>-- Select Grade --</option>
+      <option [ngValue]="1">1</option>
+      <option [ngValue]="2">2</option>
+      <option [ngValue]="3">3</option>
+      <option [ngValue]="4">4</option>
+      <option [ngValue]="5">5</option>
+      <option [ngValue]="6">6</option>
+    </select>
     <div *ngIf="employeeForm.controls['grade'].invalid && employeeForm.controls['grade'].touched" class="text-danger">
-      Grade must be at least 1.
+      Grade must be between 1-6.
     </div>
   </div>
 
@@ -30,7 +38,7 @@
     </div>
   </div>
 
-  <div class="mb-3">
+  <div class="mb-3" [hidden]="true">
     <label for="salary" class="form-label">Salary</label>
     <input id="salary" type="number" class="form-control" formControlName="salary" />
     <div *ngIf="employeeForm.controls['salary'].invalid && employeeForm.controls['salary'].touched" class="text-danger">

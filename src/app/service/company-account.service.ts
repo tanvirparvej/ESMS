@@ -13,16 +13,10 @@ export class CompanyAccountService {
 
   constructor(private http: HttpClient) {}
 
-  /* getAll(): Observable<CompanyAccount[]> {
+ 
+  getAll(): Observable<CompanyAccount[]> {
     return this.http.get<CompanyAccount[]>(this.apiUrl);
-  } */
-
-    getAll(): Observable<CompanyAccount[]> {
-  const url = `${this.apiUrl}`;
-  return this.http.get<CompanyAccount[]>(url).pipe(
-    tap(data => console.log('Service received data:', data))
-  );
-}
+  }
 
   getById(id: number): Observable<CompanyAccount> {
     return this.http.get<CompanyAccount>(`${this.apiUrl}/${id}`);
